@@ -6,10 +6,10 @@ import bridges.base.TreeElement;
 
 public class BinaryNode<K,V> extends TreeElement<K> implements Iterable<BinaryNode<K,V>>{
 
-	protected K key;
-	protected V value;
-	protected BinaryNode<K,V> left;
-	protected BinaryNode<K,V> right;
+	public K key;
+	public V value;
+	public BinaryNode<K,V> left;
+	public BinaryNode<K,V> right;
 	protected enum Order{PRE,POST,IN,LEVEL};
 	protected Order order = Order.LEVEL;
 	
@@ -211,5 +211,39 @@ public class BinaryNode<K,V> extends TreeElement<K> implements Iterable<BinaryNo
 	
 	public String toString() {
 		return "Key: " + key + " Value: " + value;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		 if (this == obj) {
+	         return true;
+	      }
+	      if (obj == null) {
+	         return false;
+	      }
+	      if (!(obj instanceof BinaryNode)) {
+	         return false;
+	      }
+	      BinaryNode<?,?> other = (BinaryNode<?, ?>) obj;
+	      boolean equalKey = (key == null || other.key == null) ? true : false;
+	      boolean equalValue = (value == null || other.value == null) ? true : false;
+	      boolean equalLeft = (left == null || other.left == null) ? true : false;
+	      boolean equalRight = (right == null || other.right == null) ? true : false;
+	      
+	      //left & right 
+	      if(!equalKey) {
+	    	  equalKey = (key.equals(other.key)) ? true : false;
+	      }
+	      if(!equalValue) {
+	    	  equalValue = (value.equals(other.value)) ? true : false;
+	      }
+	      if(!equalLeft) {
+	    	  equalLeft = (left.equals(other.left)) ? true : false;
+	      }
+	      if(!equalRight) {
+	    	  equalRight = (right.equals(other.right)) ? true : false;
+	      }
+
+	      return (equalKey && equalValue && equalLeft && equalRight);
 	}
 }

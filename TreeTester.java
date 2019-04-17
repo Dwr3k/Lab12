@@ -27,14 +27,14 @@ public class TreeTester {
       BSTRoot.add("Dirk",new Person());
    
       
-      visualize(BSTRoot);
+      //visualize(BSTRoot);
       
       BSTRoot.remove("Pat");   // Removing element with one child
       BSTRoot.remove("Sean");  // Removing element with two child
       BSTRoot.remove("Kathy"); // Removing element with two children
       BSTRoot.remove("Megan"); // Removing root
       
-      //visualize(BSTRoot);
+      visualize(BSTRoot);
       
       System.out.println(BSTRoot.search("Kathy"));
       System.out.println(BSTRoot.search("Sean"));

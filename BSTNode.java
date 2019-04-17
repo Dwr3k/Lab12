@@ -110,7 +110,7 @@ public class BSTNode<K extends Comparable<K>,V> extends BinaryNode<K,V>{
 
 				BinaryNode<K,V> rootNode = root;
 				BinaryNode<K,V> smallestNode = root.right;
-
+				
 				//If the root of the removed nodes right subtree is the smallest value in the subtree
 				//Set the removed node's right child to its right grand-child. 
 
@@ -147,19 +147,21 @@ public class BSTNode<K extends Comparable<K>,V> extends BinaryNode<K,V>{
 
 				//Make the newChild's children the children of the removed node
 
-				newChild.right = rootNode.left;
-				newChild.left = rootNode.right;
+				newChild.right = rootNode.right;
+				newChild.left = rootNode.left;
 
 			}
 			//If the root has a left child, make the new child the root's left child
 			else if(root.left != null) 
 			{
 				newChild = root.left;
+				return parent.value;
 			}
 			//If the root has a right child, make the new child the roots' right child
 			else if(root.right != null) 
 			{
 				newChild = root.right;
+				return parent.value;
 			}
 
 			//Edge case for handling the removal of the root
@@ -181,7 +183,7 @@ public class BSTNode<K extends Comparable<K>,V> extends BinaryNode<K,V>{
 			else {parent.right = newChild;}
 			return root.value;
 		}
-		return null;
+		return root.value;
 	}
 
 }
